@@ -35,7 +35,7 @@ function Clientlist({ filteredClients, user }) {
     }, []);
 
 
-    useEffect(() => {
+    useEffect((user) => {
         if (ws && currentClient) {
             ws.send(JSON.stringify({
                 type: 'webpageuser',
@@ -62,7 +62,7 @@ function Clientlist({ filteredClients, user }) {
                 ws.onmessage = null;
             };
         }
-    }, [ws, currentClient, user]);
+    }, [ws, currentClient]);
 
 
     const handleClientClick = async (client) => {
