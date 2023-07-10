@@ -45,7 +45,7 @@ function Clientlist({ filteredClients, user }) {
                 mac: `${currentClient.mac}`
             }));
 
-            ws.onmessage = (event) => {
+            const handleMessage = (event) => {
                 console.log('Raw data received', event.data)
                 const data = JSON.parse(event.data);
                 if (data.type === 'toWebpage') {
@@ -55,8 +55,15 @@ function Clientlist({ filteredClients, user }) {
                     setLoadStates(states)
                 }
             };
+
+            ws.onmessage = handleMessage;
+
+            return () => {
+                ws.onmessage = null;
+            };
         }
     }, [ws, currentClient, user]);
+
 
     const handleClientClick = async (client) => {
         setCurrentClient(client);
