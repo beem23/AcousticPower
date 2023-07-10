@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import MainPageStyles from './MainPageStyles';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function Clientlist({ filteredClients, user }) {
     const [loadStates, setLoadStates] = useState({});
