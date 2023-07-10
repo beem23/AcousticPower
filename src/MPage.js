@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import bootstrap from 'bootstrap';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MainPageStyles from './MainPageStyles';
 import axios from 'axios';
 import Search from './Search';
 import Clientlist from './Clientlist';
 import SignOut from './SignOut';
-import AddClient from './AddClient';
+
 
 function Mainpage(props) {
     const [clientList, setClientList] = useState([]);

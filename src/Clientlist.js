@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import MainPageStyles from './MainPageStyles';
-import axios from 'axios';
 
 function Clientlist({ filteredClients, user }) {
     const [loadStates, setLoadStates] = useState({});
-    const [isLooking, setIsLooking] = useState(false);
     const [currentClient, setCurrentClient] = useState(null);
     const [ws, setWs] = useState(null);
 
@@ -48,7 +46,7 @@ function Clientlist({ filteredClients, user }) {
             ws.onmessage = (event) => {
                 console.log('Raw data received', event.data)
                 const data = JSON.parse(event.data);
-                if (data.type == 'toWebpage') {
+                if (data.type === 'toWebpage') {
                     console.log('receive toWebpage');
                     const { states } = data;
                     console.log('load states:', states)
