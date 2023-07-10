@@ -10,7 +10,7 @@ function Login(props) {
         event.preventDefault();
         const fullEmail = email + '@acousticarchitects.net';
         console.log(fullEmail, "email")
-        axios.post('http://localhost:8080/server/login', { email: fullEmail, password })
+        axios.post('https://tripp-production.up.railway.app/server/login', { email: fullEmail, password })
             .then(response => {
                 props.setUser(email);
                 localStorage.setItem('token', response.data.token);

@@ -19,7 +19,7 @@ function Mainpage(props) {
         } else {
             console.log('within useEffect')
             axios
-                .get(`http://localhost:8080/server/clientlist`, {
+                .get(`https://tripp-production.up.railway.app/server/clientlist`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
