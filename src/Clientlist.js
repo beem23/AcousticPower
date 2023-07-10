@@ -54,7 +54,7 @@ function Clientlist({ filteredClients, user }) {
                 }
             };
         }
-    }, [ws, currentClient]);
+    }, [ws, currentClient, user]);
 
     const handleClientClick = async (client) => {
         setCurrentClient(client);

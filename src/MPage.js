@@ -36,7 +36,7 @@ function Mainpage(props) {
                     console.log(error);
                 });
         }
-    }, []);
+    }, [props.history]);
 
     const handleSearch = (event) => {
         const searchTerm = event.target.value;
