@@ -1,12 +1,12 @@
 // MainPageStyles.js
 const MainPageStyles = {
     buttonStyles: (index) => ({
-        backgroundColor: 'initial',
+        backgroundColor: 'aliceblue',
         borderColor: 'initial',
         borderWidth: 'initial',
-        borderRadius: 'initial',
+        borderRadius: '50px',
         padding: 'initial',
-        color: 'initial',
+        color: 'black',
         textDecoration: 'initial',
         fontSize: 'initial',
         fontWeight: 'initial',
@@ -14,12 +14,9 @@ const MainPageStyles = {
         outline: 'none',
         textTransform: 'none',
         letterSpacing: 'normal',
-        backgroundColor: 'aliceblue',
-        color: 'black',
         marginBottom: '2rem',
         width: '300px', // Fixed width
         height: '100px',  // Fixed height
-        borderRadius: '50px'
     }),
     buttonContainer: {
         display: 'flex',
@@ -29,9 +26,9 @@ const MainPageStyles = {
     },
     inputField: {
         backgroundColor: 'initial',
-        borderColor: 'initial',
-        borderWidth: 'initial',
-        borderRadius: 'initial',
+        borderColor: 'black',
+        borderWidth: '.3rem',
+        borderRadius: '50px',
         padding: 'initial',
         color: 'initial',
         textDecoration: 'initial',
@@ -45,10 +42,7 @@ const MainPageStyles = {
         height: '50px',
         paddingLeft: '1rem',
         paddingRight: '1rem',
-        borderRadius: '50px',
         marginBottom: '2rem',
-        borderWidth: '.3rem',
-        borderColor: 'black'
     }
 };
 

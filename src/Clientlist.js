@@ -63,8 +63,8 @@ function Clientlist({ filteredClients, user }) {
     }
 
     const handleClientExit = async () => {
-        setCurrentClient(null);
         setLoadStates({});
+        setCurrentClient(null);
     }
 
 
