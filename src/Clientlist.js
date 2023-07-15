@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import MainPageStyles from './MainPageStyles';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function Clientlist({ filteredClients, user }) {
     const [loadStates, setLoadStates] = useState({});
     const [currentClient, setCurrentClient] = useState(null);
-    const [ws, setWs] = useState(null);
+    const ws = useRef(null);
 
     useEffect(() => {
         const token = localStorage.getItem('token');
@@ -62,7 +62,7 @@ function Clientlist({ filteredClients, user }) {
                 ws.onmessage = null;
             };
         }
-    }, [ws, currentClient]);
+    }, [ws, currentClient, user]);
 
 
     const handleClientClick = async (client) => {
@@ -70,9 +70,10 @@ function Clientlist({ filteredClients, user }) {
     }
 
     const handleClientExit = async () => {
-        setLoadStates({});
-        setCurrentClient(null);
+        setLoadStates(prevState => ({}));
+        setCurrentClient(prevState => null);
     }
+
 
 
     const controlLoad = (client, load, control) => {
