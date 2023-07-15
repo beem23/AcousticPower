@@ -35,7 +35,7 @@ function Clientlist({ filteredClients, user }) {
 
 
     useEffect(() => {
-        if (ws.current && currentClient) {
+        if (ws.current && currentClient && ws.current.readyState === WebSocket.OPEN) {
             ws.current.send(JSON.stringify({
                 type: 'webpageuser',
                 id: `${user}`,
@@ -80,7 +80,7 @@ function Clientlist({ filteredClients, user }) {
         console.log('load:', load)
         console.log('control:', control)
 
-        if (ws.current) {
+        if (ws.current && ws.current.readyState === WebSocket.OPEN) {
             const message = {
                 type: 'controlLoad',
                 location: client.location,
