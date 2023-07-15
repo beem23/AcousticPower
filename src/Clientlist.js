@@ -26,7 +26,7 @@ function Clientlist({ filteredClients, user }) {
                 console.log('WebSocket is closed');
             };
 
-            setWs(ws);
+            ws.current = ws;
 
             return () => {
                 ws.close();
