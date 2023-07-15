@@ -12,32 +12,31 @@ function Clientlist({ filteredClients, user }) {
         const token = localStorage.getItem('token');
         //check if token is not null
         if (token) {
-            const ws = new WebSocket('wss://tripp-production.up.railway.app');
+            ws.current = new WebSocket('wss://tripp-production.up.railway.app');
 
-            ws.onopen = () => {
+            ws.current.onopen = () => {
                 console.log('WebSocket is open');
             };
 
-            ws.onerror = (error) => {
+            ws.current.onerror = (error) => {
                 console.error(`WebSocket error: ${error}`);
             };
 
-            ws.onclose = () => {
+            ws.current.onclose = () => {
                 console.log('WebSocket is closed');
             };
 
-            ws.current = ws;
-
             return () => {
-                ws.close();
+                ws.current.close();
             };
         }
     }, []);
 
 
-    useEffect((user) => {
-        if (ws && currentClient) {
-            ws.send(JSON.stringify({
+
+    useEffect(() => {
+        if (ws.current && currentClient) {
+            ws.current.send(JSON.stringify({
                 type: 'webpageuser',
                 id: `${user}`,
                 location: `${currentClient.location}`,
@@ -56,14 +55,13 @@ function Clientlist({ filteredClients, user }) {
                 }
             };
 
-            ws.onmessage = handleMessage;
+            ws.current.onmessage = handleMessage;
 
             return () => {
-                ws.onmessage = null;
+                ws.current.onmessage = null;
             };
         }
     }, [ws, currentClient, user]);
-
 
     const handleClientClick = async (client) => {
         setCurrentClient(client);
@@ -82,7 +80,7 @@ function Clientlist({ filteredClients, user }) {
         console.log('load:', load)
         console.log('control:', control)
 
-        if (ws) {
+        if (ws.current) {
             const message = {
                 type: 'controlLoad',
                 location: client.location,
@@ -92,9 +90,10 @@ function Clientlist({ filteredClients, user }) {
                 id: `${user}`
             };
 
-            ws.send(JSON.stringify(message));
+            ws.current.send(JSON.stringify(message));
         }
     }
+
 
 
 
