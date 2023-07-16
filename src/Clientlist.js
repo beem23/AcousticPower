@@ -26,6 +26,11 @@ function Clientlist({ filteredClients, user }) {
                 console.log('WebSocket is closed');
             };
 
+            ws.current.onmessage = (event) => {
+                // handle the message event here
+                console.log('Message received from server:', event.data);
+            };
+
             return () => {
                 ws.current.close();
             };
