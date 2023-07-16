@@ -51,7 +51,7 @@ function Clientlist({ filteredClients, user }) {
                     console.log('receive toWebpage');
                     const { states } = data;
                     console.log('load states:', states)
-                    setLoadStates(states)
+                    setLoadStates(prevState => ({ ...prevState, ...states }));
                 }
             };
 
